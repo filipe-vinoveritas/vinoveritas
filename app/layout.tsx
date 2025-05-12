@@ -18,7 +18,6 @@ const raleway = Raleway({
 export const metadata: Metadata = {
   title: 'Vino Veritas | Os melhores vinhos online',
   description: 'Descubra e compre os melhores vinhos do mundo com Vino Veritas. Entrega rápida e segura.',
-
   icons: {
     icon: '/images/logo.png',
     shortcut: '/images/logo.png',
@@ -35,9 +34,7 @@ export default function RootLayout({
     <html lang="pt-br" suppressHydrationWarning>
       <body className={`${playfair.variable} ${raleway.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light">
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          {children}
         </ThemeProvider>
       </body>
     </html>
