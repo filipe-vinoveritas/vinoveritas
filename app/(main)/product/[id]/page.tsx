@@ -32,7 +32,7 @@ const product = {
     "https://images.pexels.com/photos/3019019/pexels-photo-3019019.jpeg",
     "https://images.pexels.com/photos/2912108/pexels-photo-2912108.jpeg",
   ],
-  reviews: [
+  customerReviews: [
     {
       id: 1,
       user: "João Silva",
@@ -274,7 +274,7 @@ export default function ProductPage() {
             </TabsContent>
             <TabsContent value="reviews" className="mt-8">
               <div className="space-y-8">
-                {product.reviews.map((review) => (
+                {product.customerReviews.map((review) => (
                   <div key={review.id} className="border-b pb-8">
                     <div className="flex items-start gap-4">
                       <div className="relative h-12 w-12 rounded-full overflow-hidden">

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { 
   Table,
   TableBody,
@@ -74,7 +74,7 @@ const statusIcons = {
 
 export default function OrdersPage() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [selectedOrder, setSelectedOrder] = useState<null | typeof orders[0]>(null);
 
   const exportReport = () => {
     // Implement CSV export logic
@@ -132,7 +132,7 @@ export default function OrdersPage() {
           </TableHeader>
           <TableBody>
             {orders.map((order) => {
-              const StatusIcon = statusIcons[order.status] || Package;
+              const StatusIcon = statusIcons[order.status as keyof typeof statusIcons] || Package;
               return (
                 <TableRow key={order.id}>
                   <TableCell className="font-medium">{order.id}</TableCell>
@@ -140,7 +140,7 @@ export default function OrdersPage() {
                   <TableCell>{new Date(order.date).toLocaleDateString()}</TableCell>
                   <TableCell>R$ {order.total.toLocaleString()}</TableCell>
                   <TableCell>
-                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium ${statusColors[order.status]}`}>
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium ${statusColors[order.status as keyof typeof statusColors]}`}>
                       <StatusIcon className="h-3.5 w-3.5" />
                       {order.status}
                     </span>
@@ -212,8 +212,10 @@ export default function OrdersPage() {
                   <p className="text-sm text-gray-500">Total do Pedido</p>
                   <p className="text-2xl font-bold">R$ {selectedOrder.total.toLocaleString()}</p>
                 </div>
-                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${statusColors[selectedOrder.status]}`}>
-                  <StatusIcon className="h-4 w-4" />
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${statusColors[selectedOrder.status as keyof typeof statusColors]}`}>
+                  {statusIcons[selectedOrder.status as keyof typeof statusIcons] && (
+                    React.createElement(statusIcons[selectedOrder.status as keyof typeof statusIcons], { className: "h-4 w-4" })
+                  )}
                   {selectedOrder.status}
                 </span>
               </div>
