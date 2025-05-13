@@ -1,14 +1,19 @@
 "use client"
 
+import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { 
   LayoutDashboard, 
   Wine,
   Image as ImageIcon,
   Settings,
-  LogOut
+  LogOut,
+  ChevronLeft,
+  ChevronRight,
+  ShoppingBag,
+  Store
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 
@@ -24,6 +29,11 @@ const menuItems = [
     href: "/admin/produtos"
   },
   {
+    title: "Pedidos",
+    icon: ShoppingBag,
+    href: "/admin/pedidos"
+  },
+  {
     title: "Banners",
     icon: ImageIcon,
     href: "/admin/banners"
@@ -37,15 +47,33 @@ const menuItems = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 h-screen">
+    <div className={cn(
+      "bg-white border-r border-gray-200 h-screen transition-all duration-300",
+      isCollapsed ? "w-20" : "w-64"
+    )}>
       <div className="flex flex-col h-full">
-        <div className="p-6">
-          <div className="flex items-center space-x-2">
+        <div className="p-6 flex items-center justify-between">
+          <div className={cn(
+            "flex items-center space-x-2",
+            isCollapsed && "justify-center"
+          )}>
             <Wine className="h-8 w-8 text-burgundy" />
-            <span className="text-xl font-semibold">Admin</span>
+            {!isCollapsed && <span className="text-xl font-semibold">Admin</span>}
           </div>
+          <button
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500"
+          >
+            {isCollapsed ? (
+              <ChevronRight className="h-5 w-5" />
+            ) : (
+              <ChevronLeft className="h-5 w-5" />
+            )}
+          </button>
         </div>
 
         <nav className="flex-1 p-4">
@@ -58,11 +86,12 @@ export function Sidebar() {
                     href={item.href}
                     className={cn(
                       "flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors",
-                      pathname === item.href && "bg-burgundy/10 text-burgundy"
+                      pathname === item.href && "bg-burgundy/10 text-burgundy",
+                      isCollapsed && "justify-center"
                     )}
                   >
                     <Icon className="h-5 w-5" />
-                    <span>{item.title}</span>
+                    {!isCollapsed && <span>{item.title}</span>}
                   </Link>
                 </li>
               );
@@ -70,13 +99,26 @@ export function Sidebar() {
           </ul>
         </nav>
 
-        <div className="p-4 border-t border-gray-200">
+        <div className="p-4 border-t border-gray-200 space-y-2">
+          <button
+            onClick={() => router.push('/')}
+            className={cn(
+              "flex items-center space-x-3 px-3 py-2 w-full rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors",
+              isCollapsed && "justify-center"
+            )}
+          >
+            <Store className="h-5 w-5" />
+            {!isCollapsed && <span>Voltar à Loja</span>}
+          </button>
           <button
             onClick={() => signOut()}
-            className="flex items-center space-x-3 px-3 py-2 w-full rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+            className={cn(
+              "flex items-center space-x-3 px-3 py-2 w-full rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors",
+              isCollapsed && "justify-center"
+            )}
           >
             <LogOut className="h-5 w-5" />
-            <span>Sair</span>
+            {!isCollapsed && <span>Sair</span>}
           </button>
         </div>
       </div>
