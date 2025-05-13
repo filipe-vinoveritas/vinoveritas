@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Wine, Mail, Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -9,8 +10,14 @@ const Footer = () => {
           {/* Brand Column */}
           <div>
             <div className="flex items-center mb-6">
-              <Wine className="h-8 w-8 text-gold mr-2" />
-              <span className="font-serif text-2xl">Château Reserve</span>
+                         <Image
+                              src="/images/logo2.png"
+                              alt="Vino Veritas Logo"
+                              width={32}
+                              height={32}
+                              className="h-12 w-auto mr-2"
+                            />
+              <span className="font-serif text-2xl">Vino Veritas</span>
             </div>
             <p className="font-sans text-gray-300 mb-6">
               Purveyors of exceptional wines from the world's most prestigious vineyards since 1897.
@@ -86,9 +93,9 @@ const Footer = () => {
         </div>
 
         <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} Château Reserve. All rights reserved.
-          </p>
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+            © {new Date().getFullYear()} Vino Veritas. Todos os direitos reservados.
+            </p>
           <div className="flex space-x-6">
             <Link href="#" className="text-gray-400 text-sm hover:text-gold transition-colors duration-300">
               Privacy Policy
