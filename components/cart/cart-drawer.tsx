@@ -1,4 +1,3 @@
-```typescript
 'use client';
 
 import { ShoppingBag, X, Plus, Minus, Trash } from 'lucide-react';
@@ -13,6 +12,7 @@ import {
 import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 // Mock cart data - replace with real data from your state management solution
 const initialCart = [
@@ -57,14 +57,25 @@ export function CartDrawer() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" className="relative">
+        {/* <Button variant="ghost" className="relative">
           <ShoppingBag className="h-5 w-5" />
           {cart.length > 0 && (
             <span className="absolute -top-2 -right-2 bg-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
               {cart.reduce((sum, item) => sum + item.quantity, 0)}
             </span>
           )}
-        </Button>
+        </Button> */}
+         <button className={cn(
+                'hover:text-gold transition-colors duration-300 relative text-charcoal',
+                // scrolled ? 'text-charcoal' : 'text-white'
+              )}>
+                <ShoppingBag className="h-5 w-5" />
+               {cart.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              {cart.reduce((sum, item) => sum + item.quantity, 0)}
+            </span>
+          )}
+              </button>
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-lg">
         <SheetHeader>
@@ -139,4 +150,3 @@ export function CartDrawer() {
     </Sheet>
   );
 }
-```

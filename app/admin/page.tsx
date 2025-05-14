@@ -1,141 +1,143 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination';
-import { Search, Shield, User as UserIcon } from 'lucide-react';
+import { Card } from "@/components/ui/card";
+import { 
+  LineChart, 
+  BarChart, 
+  Users, 
+  ShoppingBag, 
+  DollarSign,
+  TrendingUp 
+} from "lucide-react";
+import { 
+  LineChart as RechartsLineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer 
+} from "recharts";
 
-// Mock users data - replace with real data from your backend
-const mockUsers = Array.from({ length: 50 }, (_, i) => ({
-  id: i + 1,
-  name: `User ${i + 1}`,
-  email: `user${i + 1}@example.com`,
-  role: i < 5 ? 'admin' : 'customer',
-  createdAt: new Date(2024, 0, i + 1).toLocaleDateString(),
-  lastLogin: new Date(2024, 2, i + 1).toLocaleDateString(),
-}));
+const data = [
+  { name: "Jan", visits: 4000, orders: 2400 },
+  { name: "Feb", visits: 3000, orders: 1398 },
+  { name: "Mar", visits: 2000, orders: 9800 },
+  { name: "Apr", visits: 2780, orders: 3908 },
+  { name: "May", visits: 1890, orders: 4800 },
+  { name: "Jun", visits: 2390, orders: 3800 },
+];
+
+const stats = [
+  {
+    title: "Total Vendas",
+    value: "R$ 45.231",
+    change: "+20.1%",
+    icon: DollarSign
+  },
+  {
+    title: "Visitantes",
+    value: "12.543",
+    change: "+15.3%",
+    icon: Users
+  },
+  {
+    title: "Pedidos",
+    value: "856",
+    change: "+12.5%",
+    icon: ShoppingBag
+  },
+  {
+    title: "Conversão",
+    value: "6.8%",
+    change: "+3.2%",
+    icon: TrendingUp
+  }
+];
 
 export default function AdminDashboard() {
-  const [search, setSearch] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-
-  // Filter users based on search
-  const filteredUsers = mockUsers.filter(
-    (user) =>
-      user.name.toLowerCase().includes(search.toLowerCase()) ||
-      user.email.toLowerCase().includes(search.toLowerCase())
-  );
-
-  // Calculate pagination
-  const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
-  const currentUsers = filteredUsers.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Usuários</h1>
-        <p className="text-gray-500">Gerencie os usuários do sistema</p>
+        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+        <p className="text-gray-500">Bem-vindo ao painel administrativo</p>
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-          <Input
-            placeholder="Buscar por nome ou email..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="pl-10"
-          />
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {stats.map((stat, index) => {
+          const Icon = stat.icon;
+          return (
+            <Card key={index} className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{stat.title}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mt-1">{stat.value}</h3>
+                  <p className="text-sm text-green-600 mt-1">{stat.change}</p>
+                </div>
+                <div className="bg-burgundy/10 p-3 rounded-full">
+                  <Icon className="h-6 w-6 text-burgundy" />
+                </div>
+              </div>
+            </Card>
+          );
+        })}
       </div>
 
-      <div className="bg-white rounded-lg shadow">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Nome</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Tipo</TableHead>
-              <TableHead>Cadastro</TableHead>
-              <TableHead>Último Acesso</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {currentUsers.map((user) => (
-              <TableRow key={user.id}>
-                <TableCell className="font-medium">{user.name}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>
-                  <span
-                    className={cn(
-                      'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium',
-                      user.role === 'admin'
-                        ? 'bg-burgundy text-white'
-                        : 'bg-gray-100 text-gray-800'
-                    )}
-                  >
-                    {user.role === 'admin' ? (
-                      <Shield className="h-3.5 w-3.5" />
-                    ) : (
-                      <UserIcon className="h-3.5 w-3.5" />
-                    )}
-                    {user.role === 'admin' ? 'Administrador' : 'Cliente'}
-                  </span>
-                </TableCell>
-                <TableCell>{user.createdAt}</TableCell>
-                <TableCell>{user.lastLogin}</TableCell>
-              </TableRow>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card className="p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h3 className="text-lg font-medium">Visitas vs. Pedidos</h3>
+              <p className="text-sm text-gray-500">Últimos 6 meses</p>
+            </div>
+            <LineChart className="h-5 w-5 text-gray-400" />
+          </div>
+          <div className="h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <RechartsLineChart data={data}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Line type="monotone" dataKey="visits" stroke="#7f1d1d" />
+                <Line type="monotone" dataKey="orders" stroke="#ca8a04" />
+              </RechartsLineChart>
+            </ResponsiveContainer>
+          </div>
+        </Card>
+
+        <Card className="p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h3 className="text-lg font-medium">Produtos Mais Vendidos</h3>
+              <p className="text-sm text-gray-500">Top 5 produtos</p>
+            </div>
+            <BarChart className="h-5 w-5 text-gray-400" />
+          </div>
+          <div className="space-y-4">
+            {[
+              { name: "Château Margaux 2015", sales: 156 },
+              { name: "Dom Pérignon 2008", sales: 124 },
+              { name: "Opus One 2018", sales: 98 },
+              { name: "Sassicaia 2017", sales: 87 },
+              { name: "Cristal 2013", sales: 76 }
+            ].map((product, index) => (
+              <div key={index} className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium">{product.name}</p>
+                  <p className="text-sm text-gray-500">{product.sales} vendas</p>
+                </div>
+                <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-burgundy"
+                    style={{ width: `${(product.sales / 156) * 100}%` }}
+                  />
+                </div>
+              </div>
             ))}
-          </TableBody>
-        </Table>
+          </div>
+        </Card>
       </div>
-
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-            />
-          </PaginationItem>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <PaginationItem key={page}>
-              <PaginationLink
-                onClick={() => setCurrentPage(page)}
-                isActive={currentPage === page}
-              >
-                {page}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
-          <PaginationItem>
-            <PaginationNext
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
     </div>
   );
 }

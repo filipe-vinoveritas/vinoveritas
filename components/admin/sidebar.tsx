@@ -8,7 +8,7 @@ import {
   LayoutDashboard, 
   Wine,
   Image as ImageIcon,
-  Settings,
+  User2,
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -39,9 +39,9 @@ const menuItems = [
     href: "/admin/banners"
   },
   {
-    title: "Configurações",
-    icon: Settings,
-    href: "/admin/configuracoes"
+    title: "Usuários",
+    icon: User2,
+    href: "/admin/usuarios"
   }
 ];
 
