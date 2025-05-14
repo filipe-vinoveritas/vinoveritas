@@ -1,3 +1,4 @@
+```typescript
 'use client';
 
 import { ShoppingBag, X, Plus, Minus, Trash } from 'lucide-react';
@@ -11,6 +12,7 @@ import {
 } from '@/components/ui/sheet';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 // Mock cart data - replace with real data from your state management solution
 const initialCart = [
@@ -31,6 +33,7 @@ const initialCart = [
 ];
 
 export function CartDrawer() {
+  const router = useRouter();
   const [cart, setCart] = useState(initialCart);
   const [open, setOpen] = useState(false);
 
@@ -42,6 +45,11 @@ export function CartDrawer() {
       }
       return item;
     }).filter(item => item.quantity > 0));
+  };
+
+  const handleCheckout = () => {
+    setOpen(false);
+    router.push('/checkout');
   };
 
   const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -118,7 +126,10 @@ export function CartDrawer() {
                 <span>Total</span>
                 <span>R$ {total.toLocaleString()}</span>
               </div>
-              <Button className="w-full bg-burgundy hover:bg-burgundy-light">
+              <Button 
+                className="w-full bg-burgundy hover:bg-burgundy-light"
+                onClick={handleCheckout}
+              >
                 Finalizar Compra
               </Button>
             </div>
@@ -128,3 +139,4 @@ export function CartDrawer() {
     </Sheet>
   );
 }
+```
