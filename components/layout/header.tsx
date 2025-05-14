@@ -34,8 +34,8 @@ const Header = () => {
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled 
             ? 'bg-white bg-opacity-95 shadow-md py-3' 
-          : 'bg-[#faf8f5] bg-opacity-90 shadow-sm py-6'
-          // : 'bg-[#7d1c34] bg-opacity-80 shadow-sm py-6'
+          // : 'bg-[#faf8f5] bg-opacity-90 shadow-sm py-6'
+          : 'bg-white bg-opacity-95 shadow-sm py-6'
         )}
       >
         <div className="container-custom mx-auto">
