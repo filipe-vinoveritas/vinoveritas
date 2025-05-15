@@ -65,17 +65,17 @@ export function CartDrawer() {
             </span>
           )}
         </Button> */}
-         <button className={cn(
-                'hover:text-gold transition-colors duration-300 relative text-charcoal',
-                // scrolled ? 'text-charcoal' : 'text-white'
-              )}>
-                <ShoppingBag className="h-5 w-5" />
-               {cart.length > 0 && (
+        <button className={cn(
+          'hover:text-gold transition-colors duration-300 relative text-charcoal',
+          // scrolled ? 'text-charcoal' : 'text-white'
+        )}>
+          <ShoppingBag className="h-5 w-5" />
+          {cart.length > 0 && (
             <span className="absolute -top-2 -right-2 bg-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
               {cart.reduce((sum, item) => sum + item.quantity, 0)}
             </span>
           )}
-              </button>
+        </button>
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-lg">
         <SheetHeader>
@@ -132,12 +132,12 @@ export function CartDrawer() {
             )}
           </div>
           {cart.length > 0 && (
-            <div className="border-t pt-4 mt-4 space-y-4">
+            <div className="border-t pt-4 mt-4 space-y-4 mb-16 sm:mb-14">
               <div className="flex justify-between text-lg font-medium">
                 <span>Total</span>
                 <span>R$ {total.toLocaleString()}</span>
               </div>
-              <Button 
+              <Button
                 className="w-full bg-burgundy hover:bg-burgundy-light"
                 onClick={handleCheckout}
               >

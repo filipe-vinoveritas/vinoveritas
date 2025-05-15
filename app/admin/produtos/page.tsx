@@ -42,9 +42,18 @@ const products = [
 
 export default function ProductsPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  interface Product {
+    id: number;
+    name: string;
+    category: string;
+    price: number;
+    stock: number;
+    status: string;
+  }
 
-  const handleEdit = (product) => {
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  const handleEdit = (product: Product) => {
     setSelectedProduct(product);
     setIsDialogOpen(true);
   };

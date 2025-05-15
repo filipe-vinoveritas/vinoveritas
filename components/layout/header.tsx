@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, User, Search, Wine } from 'lucide-react';
+import { Menu, X, User, Search, Wine, LayoutDashboard } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { AuthDialog } from '@/app/auth/signin/auth-dialog';
@@ -87,6 +87,13 @@ const Header = () => {
                 <User className="h-5 w-5" />
               </button>
               <CartDrawer />
+              <Link 
+                href="/admin" 
+                className="hover:text-gold transition-colors duration-300 text-charcoal"
+              >
+                <LayoutDashboard className="h-5 w-5" />
+                </Link>
+                
             </div>
 
             {/* Mobile Menu Button */}
@@ -137,6 +144,13 @@ const Header = () => {
                   <span>Conta</span>
                 </button>
                 <CartDrawer />
+                <Link 
+                  href="/admin" 
+                  className="flex items-center text-charcoal hover:text-burgundy transition-colors duration-300"
+                >
+                  <LayoutDashboard className="h-5 w-5 mr-2" />
+                  <span>Admin</span>
+                </Link>
               </div>
             </div>
           </div>

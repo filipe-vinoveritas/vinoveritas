@@ -1,4 +1,3 @@
-```typescript
 'use client';
 
 import { useEffect } from 'react';
@@ -44,4 +43,3 @@ export default function CheckoutSuccessPage() {
     </div>
   );
 }
-```
