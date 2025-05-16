@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Menu, X, User, Search, Wine, LayoutDashboard } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { AuthDialog } from '@/app/auth/signin/auth-dialog';
+import { AuthDialog } from '@/app/(main)/auth/signin/auth-dialog';
 import { CartDrawer } from '@/components/cart/cart-drawer';
 
 const Header = () => {
@@ -33,8 +33,8 @@ const Header = () => {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          scrolled 
-            ? 'bg-white bg-opacity-95 shadow-md py-3' 
+          scrolled
+            ? 'bg-white bg-opacity-95 shadow-md py-3'
             : 'bg-white bg-opacity-95 shadow-sm py-6'
         )}
       >
@@ -63,8 +63,8 @@ const Header = () => {
                 ['Exclusivos', 'exclusives'],
                 ['Vinhos', 'wines']
               ].map(([label, path]) => (
-                <Link 
-                  key={path} 
+                <Link
+                  key={path}
                   href={`/${path}`}
                   className={cn(
                     'font-sans text-sm uppercase tracking-wide text-charcoal transition-colors duration-300 hover:text-gold',
@@ -80,25 +80,22 @@ const Header = () => {
               <button className="hover:text-gold transition-colors duration-300 text-charcoal">
                 <Search className="h-5 w-5" />
               </button>
-              <button 
-                onClick={() => setIsAuthOpen(true)}
-                className="hover:text-gold transition-colors duration-300 text-charcoal"
-              >
+              <Link href={'/auth/signin'} className="hover:text-gold transition-colors duration-300 text-charcoal">
                 <User className="h-5 w-5" />
-              </button>
+              </Link>
               <CartDrawer />
-              <Link 
-                href="/admin" 
+              <Link
+                href="/admin"
                 className="hover:text-gold transition-colors duration-300 text-charcoal"
               >
                 <LayoutDashboard className="h-5 w-5" />
-                </Link>
-                
+              </Link>
+
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
-              onClick={toggleMenu} 
+            <button
+              onClick={toggleMenu}
               className="md:hidden focus:outline-none text-charcoal"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -118,8 +115,8 @@ const Header = () => {
                   ['Exclusivos', 'exclusives'],
                   ['Vinhos', 'vinhos']
                 ].map(([label, path]) => (
-                  <Link 
-                    key={path} 
+                  <Link
+                    key={path}
                     href={`/${path}`}
                     className="font-sans text-charcoal text-lg hover:text-burgundy transition-colors duration-300"
                     onClick={() => setIsOpen(false)}
@@ -133,7 +130,7 @@ const Header = () => {
                   <Search className="h-5 w-5 mr-2" />
                   <span>Buscar</span>
                 </button>
-                <button 
+                <button
                   onClick={() => {
                     setIsAuthOpen(true);
                     setIsOpen(false);
@@ -144,8 +141,8 @@ const Header = () => {
                   <span>Conta</span>
                 </button>
                 <CartDrawer />
-                <Link 
-                  href="/admin" 
+                <Link
+                  href="/admin"
                   className="flex items-center text-charcoal hover:text-burgundy transition-colors duration-300"
                 >
                   <LayoutDashboard className="h-5 w-5 mr-2" />

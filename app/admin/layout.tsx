@@ -9,15 +9,15 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
 
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
+  // if (status === "loading") {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (!session || (session.user as any).role !== "admin") {
-    redirect("/auth/signin");
-  }
+  // if (!session || (session.user as any).role !== "admin") {
+  //   redirect("/auth/signin");
+  // }
 
   return (
     <div className="flex h-screen bg-gray-100">

@@ -1,6 +1,18 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+declare module "next-auth" {
+  interface User {
+    role?: string;
+  }
+  interface Session {
+    user?: {
+      role?: string;
+      [key: string]: any;
+    };
+  }
+}
+
 const adminUser = {
   id: "1",
   email: "admin@admin.com",
@@ -18,9 +30,9 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
-        
-        if (credentials.email === adminUser.email && 
-            credentials.password === adminUser.password) {
+
+        if (credentials.email === adminUser.email &&
+          credentials.password === adminUser.password) {
           return adminUser;
         }
         return null;
