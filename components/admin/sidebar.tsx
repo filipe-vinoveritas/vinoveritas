@@ -4,8 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { 
-  LayoutDashboard, 
+import {
+  LayoutDashboard,
   Wine,
   Image as ImageIcon,
   User2,
@@ -16,6 +16,7 @@ import {
   Store
 } from "lucide-react";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 
 const menuItems = [
   {
@@ -61,7 +62,14 @@ export function Sidebar() {
             "flex items-center space-x-2",
             isCollapsed && "justify-center"
           )}>
-            <Wine className="h-8 w-8 text-burgundy" />
+            {/* <Wine className="h-8 w-8 text-burgundy" /> */}
+            <Image
+              src="/images/logo.png"
+              alt="Vino Veritas Logo"
+              width={32}
+              height={32}
+              className="h-12 w-12"
+            />
             {!isCollapsed && <span className="text-xl font-semibold">Admin</span>}
           </div>
           <button
