@@ -14,7 +14,7 @@ const WineStory = () => {
     <section ref={ref} className="section-padding bg-cream relative overflow-hidden">
       <div className="absolute top-0 left-0 w-48 h-48 bg-burgundy opacity-5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-gold opacity-5 rounded-full translate-x-1/2 translate-y-1/2"></div>
-      
+
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className={cn(
@@ -23,24 +23,23 @@ const WineStory = () => {
           )}>
             <span className="text-burgundy text-sm uppercase tracking-wider font-medium">Nossa História</span>
             <h2 className="text-3xl md:text-4xl font-serif mb-6 text-charcoal mt-2">
-              Um Legado de Excelência desde 1897
+              Um Legado de Excelência desde 20...
             </h2>
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Por mais de um século, o Château Reserve tem sido um símbolo de excelência no mundo dos vinhos finos. Nossa jornada começou nas colinas de Bordeaux, onde nosso fundador, Monsieur Pierre Bonneville, estabeleceu a primeira vinícola Château Reserve com uma visão singular: criar vinhos que expressassem a mais pura essência de seu terroir.
+              In vino veritas é um provérbio em latim que significa “no vinho está a verdade”, para expressar a sensação de “liberdade” provocada pelo álcool. Com isso, os antigos romanos queriam dizer que quando as pessoas que estão sob efeito do vinho, perdem a vergonha e revelam possíveis verdades. A verdade sobre nós? Somos jovens na idade e tradicionais na alma. Unimos nossos esforços para criar um espaço singular, onde nossa paixão pelo vinho se alia a preços justos e honestos, proporcionando uma harmonia de prazeres que transcende a degustação.
+              <p className="text-gray-700 mb-8 leading-relaxed">
+                Cada rótulo cuidadosamente escolhido e disposto em nosso site é mais do que uma simples garrafa de vinho, é uma narrativa que se desenrola desde os vinhedos até a sua casa. Uma sinfonia de aromas encantadores, sabores complexos e tradições inenarráveis dentro da sua taça. A Vino Veritas é uma loja tradicional e honesta, com respeito a mesa e a família, que está sempre disposta a entregar a jornada do vinho. Então, seja você um conhecedor erudito ou um iniciante curioso, convidamos calorosamente a embarcar nessa jornada com a gente, explorando nossa loja e acompanhando nossas redes sociais. Brindemos à autenticidade, à cultura e à busca incessante por novas experiências. Saúde!            </p>
             </p>
-            <p className="text-gray-700 mb-8 leading-relaxed">
-              Hoje, essa visão continua guiando cada aspecto de nosso empreendimento. Desde nossos relacionamentos cuidadosamente cultivados com os viticultores mais distintos do mundo até nossas instalações de armazenamento de última geração, somos dedicados a trazer os melhores vinhos da vinícola à sua mesa.
-            </p>
-            <button className="btn-primary">Nossa História</button>
+            {/* <button className="btn-primary">Nossa História</button> */}
           </div>
-          
+
           <div className={cn(
             "relative transition-all duration-1000 delay-300",
             inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"
           )}>
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl h-[500px]">
-              <Image 
-                src="https://images.pexels.com/photos/5946641/pexels-photo-5946641.jpeg" 
+              <Image
+                src="https://images.pexels.com/photos/5946641/pexels-photo-5946641.jpeg"
                 alt="Adega histórica"
                 fill
                 className="object-cover"
@@ -51,7 +50,7 @@ const WineStory = () => {
             <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-gold opacity-20 rounded-full z-0"></div>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24">
           {[
             {
@@ -67,7 +66,7 @@ const WineStory = () => {
               description: "Nossas adegas climatizadas mantêm condições ideais para a preservação do vinho."
             }
           ].map((item, index) => (
-            <div 
+            <div
               key={index}
               className={cn(
                 "bg-white p-8 rounded-lg shadow-md transition-all duration-700 delay-[calc(300ms*var(--index))]",
