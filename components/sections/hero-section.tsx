@@ -71,14 +71,14 @@ const HeroSection = () => {
                     </p>
                   </div>
                   <div className={`transition-all duration-1000 delay-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
+                    {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
                       <button className="btn-primary">
                         Explorar Coleção
                       </button>
                       <button className="btn-secondary bg-transparent text-white border-white hover:bg-white hover:text-burgundy">
                         Consultor de Vinhos
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -106,9 +106,8 @@ const HeroSection = () => {
         {slides.map((_, index) => (
           <button
             key={index}
-            className={`w-2 h-2 rounded-full transition-all ${
-              index === selectedIndex ? 'bg-white w-6' : 'bg-white/50'
-            }`}
+            className={`w-2 h-2 rounded-full transition-all ${index === selectedIndex ? 'bg-white w-6' : 'bg-white/50'
+              }`}
             onClick={() => emblaApi?.scrollTo(index)}
           />
         ))}
