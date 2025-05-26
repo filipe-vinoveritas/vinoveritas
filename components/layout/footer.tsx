@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Wine, Mail, Phone, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import Image from 'next/image';
+import { FiFacebook, FiInstagram, FiYoutube } from "react-icons/fi";
 
 const Footer = () => {
   return (
@@ -23,14 +24,14 @@ const Footer = () => {
               A Vino Veritas é uma loja tradicional e honesta, com respeito aos momento especiais que a jornada do vinho acompanha e proporciona.
             </p>
             <div className="flex space-x-4">
-              <Link target='_blank' rel='noopener noreferrer' href="https://www.facebook.com/vinoveritasbr" className="text-gray-300 hover:text-gold transition-colors duration-300">
-                <Facebook className="h-5 w-5" />
+              <Link target='_blank' rel='noopener noreferrer' href="https://www.facebook.com/vinoveritasbr" className="text-[#0866FF] hover:text-gold transition-colors duration-300">
+                <FiFacebook className="h-5 w-5" />
               </Link>
-              <Link target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/vinoveritasbr" className="text-gray-300 hover:text-gold transition-colors duration-300">
-                <Instagram className="h-5 w-5" />
+              <Link target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/vinoveritasbr" className="text-[#FF0069] hover:text-gold transition-colors duration-300">
+                <FiInstagram className="h-5 w-5" />
               </Link>
-              <Link target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@vinoveritasbr" className="text-gray-300 hover:text-gold transition-colors duration-300">
-                <Youtube className="h-5 w-5" />
+              <Link target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@vinoveritasbr" className="text-[#FF0000] hover:text-gold transition-colors duration-300">
+                <FiYoutube className="h-5 w-5" />
               </Link>
             </div>
           </div>
