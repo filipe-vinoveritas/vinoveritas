@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Wine, Mail, Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Wine, Mail, Phone, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -20,43 +20,44 @@ const Footer = () => {
               <span className="font-serif text-2xl">Vino Veritas</span>
             </div>
             <p className="font-sans text-gray-300 mb-6">
-              Purveyors of exceptional wines from the world's most prestigious vineyards since 1897.
+              A Vino Veritas é uma loja tradicional e honesta, com respeito aos momento especiais que a jornada do vinho acompanha e proporciona.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-gold transition-colors duration-300">
+              <Link target='_blank' rel='noopener noreferrer' href="https://www.facebook.com/vinoveritasbr" className="text-gray-300 hover:text-gold transition-colors duration-300">
                 <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-gold transition-colors duration-300">
+              </Link>
+              <Link target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/vinoveritasbr" className="text-gray-300 hover:text-gold transition-colors duration-300">
                 <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-gold transition-colors duration-300">
-                <Twitter className="h-5 w-5" />
-              </a>
+              </Link>
+              <Link target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@vinoveritasbr" className="text-gray-300 hover:text-gold transition-colors duration-300">
+                <Youtube className="h-5 w-5" />
+              </Link>
             </div>
           </div>
 
-          {/* Shop Column */}
+          {/* Payments Column */}
           <div>
-            <h3 className="font-serif text-xl mb-6 text-gold">Shop</h3>
-            <ul className="space-y-4">
-              {['Red Wines', 'White Wines', 'Rosé', 'Champagne', 'Sparkling', 'Wine Gifts'].map((item) => (
-                <li key={item}>
-                  <Link
-                    href="#"
-                    className="text-gray-300 hover:text-gold transition-colors duration-300"
-                  >
-                    {item}
-                  </Link>
-                </li>
+            <h3 className="font-serif text-xl mb-6 text-gold">Formas de pagamento</h3>
+            <div className="flex flex-wrap gap-1">
+              {['american', 'diners', 'elo', 'hipercard', 'master', 'visa', 'pix', 'boleto', 'hiper', 'bb', 'bradesco'].map((item) => (
+                <div key={item}>
+                  <Image
+                    src={`/images/${item.toLowerCase().replace(/\s+/g, '-')}.png`}
+                    alt={item}
+                    width={32}
+                    height={32}
+                    className="h-8 w-auto mr-2"
+                  />
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Company Column */}
           <div>
-            <h3 className="font-serif text-xl mb-6 text-gold">Company</h3>
+            <h3 className="font-serif text-xl mb-6 text-gold">Institucional</h3>
             <ul className="space-y-4">
-              {['About Us', 'Our Story', 'Vineyards', 'Sustainability', 'Private Events', 'Careers'].map((item) => (
+              {['Notícias', 'Fale Conosco'].map((item) => (
                 <li key={item}>
                   <Link
                     href="#"
@@ -67,6 +68,25 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+            <h3 className="font-serif text-xl my-6 text-gold">Selos de Segurança</h3>
+            <Link target='_blank' rel='noopener noreferrer' href="https://transparencyreport.google.com/safe-browsing/search?url=https:%2F%2Fwww.vinoveritas.com.br">
+              <Image
+                src="/images/google.png"
+                alt="selo lojaprotegida"
+                width={150}
+                height={50}
+                className="h-10 w-auto bg-white rounded-sm p-1 mb-3"
+              />
+            </Link>
+            <Link target='_blank' rel='noopener noreferrer' href="https://www.lojaprotegida.com.br/1218868">
+              <Image
+                src="/images/selo_lojaprotegida.png"
+                alt="selo lojaprotegida"
+                width={150}
+                height={50}
+                className="h-10 w-auto"
+              />
+            </Link>
           </div>
 
           {/* Contact Column */}
@@ -101,13 +121,13 @@ const Footer = () => {
           </p>
           <div className="flex space-x-6">
             <Link href="#" className="text-gray-400 text-sm hover:text-gold transition-colors duration-300">
-              Privacy Policy
+              Política de Privacidade
             </Link>
             <Link href="#" className="text-gray-400 text-sm hover:text-gold transition-colors duration-300">
-              Terms of Service
+              Sobre nós
             </Link>
             <Link href="#" className="text-gray-400 text-sm hover:text-gold transition-colors duration-300">
-              Shipping Policy
+              Trocas e Devoluções
             </Link>
           </div>
         </div>
