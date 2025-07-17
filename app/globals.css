@@ -45,14 +45,27 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     background-color: hsl(var(--color-cream));
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-serif;
   }
-  p, a, li, button, input, textarea {
+
+  p,
+  a,
+  li,
+  button,
+  input,
+  textarea {
     @apply font-sans;
   }
 }
@@ -61,57 +74,88 @@
   .font-serif {
     font-family: var(--font-playfair);
   }
+
   .font-sans {
     font-family: var(--font-raleway);
   }
+
   .text-burgundy {
     color: hsl(var(--color-burgundy));
   }
+
   .text-gold {
     color: hsl(var(--color-gold));
   }
+
   .bg-burgundy {
     background-color: hsl(var(--color-burgundy));
   }
+
   .bg-burgundy-light {
     background-color: hsl(var(--color-burgundy-light));
   }
+
   .bg-gold {
     background-color: hsl(var(--color-gold));
   }
+
   .bg-gold-light {
     background-color: hsl(var(--color-gold-light));
   }
+
   .bg-cream {
     background-color: hsl(var(--color-cream));
   }
+
   .border-gold {
     border-color: hsl(var(--color-gold));
   }
+
   .animate-fade-in {
     animation: fadeIn 1.5s ease-in-out;
   }
+
   .animate-slide-up {
     animation: slideUp 1s ease-out;
   }
+
   .animate-slide-down {
     animation: slideDown 1s ease-out;
   }
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  0% { transform: translateY(20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideDown {
-  0% { transform: translateY(-20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .section-padding {
@@ -124,7 +168,7 @@
 
 /* Hero gradient overlay */
 .hero-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
 }
 
 /* Wine card hover effect */

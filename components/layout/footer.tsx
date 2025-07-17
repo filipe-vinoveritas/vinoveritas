@@ -47,7 +47,7 @@ const Footer = () => {
                     alt={item}
                     width={32}
                     height={32}
-                    className="h-8 w-auto mr-2"
+                    className="h-8 w-8 object-contain mr-2"
                   />
                 </div>
               ))}
